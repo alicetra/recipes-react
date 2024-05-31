@@ -6,8 +6,9 @@ const SinglePage = () => {
   const { recipe_id } = useParams();
 
   const state = useSelector((state) => state.recipe);
-
-  const selectedItem = state.data.recipes[recipe_id];
+// I need this since recipe_id is a string instead of an integer and find will return undefined
+const numericRecipeId = parseInt(recipe_id, 10)
+const selectedItem = state.data.recipes.find(recipe => recipe.id === numericRecipeId)
 
   console.log("Recipe ID:", recipe_id);
   console.log("All Recipes:", state.data.recipes);
