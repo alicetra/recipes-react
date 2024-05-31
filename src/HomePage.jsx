@@ -7,6 +7,7 @@ import RecipeImage from './components/RecipeImage';
 import RecipeRating from './components/RecipeRating';
 
 
+
 const Homepage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipe);
@@ -15,7 +16,6 @@ const Homepage = () => {
     dispatch(fetchrecipe());
   }, []);
 
-  console.log(state)
   return (
     <div>
       {state.isLoading ? (
