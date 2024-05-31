@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import Todo from './Todo'
+import Homepage from './HomePage'
 
 
 function App() {
 
   return (
   <div>
-    <Todo/>
+    <Homepage/>
   </div>
   )
 }

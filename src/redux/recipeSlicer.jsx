@@ -8,7 +8,7 @@ export const fetchrecipe = createAsyncThunk("fetchrecipe", async () => {
 const recipeSlice = createSlice ({
     name :"recipe",
     initialState : {
-        isLoading: false,
+        isLoading: true,
         data: [],
         error: false
     },
@@ -21,6 +21,7 @@ const recipeSlice = createSlice ({
         state.data = action.payload
         });
         builder.addCase(fetchrecipe.rejected, (state,action) => {
+        console.log(action)
         state.error = true
         })
     }
