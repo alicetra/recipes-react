@@ -26,9 +26,9 @@ const Homepage = () => {
             <div key={index} className="column is-4 box">
               <div className="content has-text-centered">
               <RecipeTitle name={item.name} id={item.id} />
-              <RecipeDifficulty difficulty={item.difficulty} id={item.id} />
-              <RecipeRating rating={item.rating} id={item.id} />
-              <RecipeImage image={item.image} id={item.id} />
+              <RecipeDifficulty difficulty={item.difficulty}/>
+              <RecipeRating rating={item.rating} />
+              <RecipeImage image={item.image}  />
             </div>
             </div>
           ))}
