@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RecipeTime = ({time}) => {
-  return <div>{time} minutes</div>;
+  return <div>Cooking time: {time} minutes</div>;
 };
 
 export default RecipeTime;

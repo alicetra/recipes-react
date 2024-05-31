@@ -1,4 +1,4 @@
-import {createSlice,createAsyncThunk, isAllOf} from "@reduxjs/toolkit";
+import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchrecipe = createAsyncThunk("fetchrecipe", async () => {
     const data = await fetch('https://dummyjson.com/recipes')
@@ -10,7 +10,7 @@ const recipeSlice = createSlice ({
     initialState : {
         isLoading: true,
         data: [],
-        error: false
+        error: false,
     },
     extraReducers: (builder) => {
         builder.addCase(fetchrecipe.pending, (state,action) => {
