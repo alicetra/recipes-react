@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RecipeDifficulty = ({difficulty,id}) => {
-  return <div>Difficult: {difficulty} </div>;
+  return <span className="tag is-dark">Difficult: {difficulty} </span>;
 };
 
 export default RecipeDifficulty;

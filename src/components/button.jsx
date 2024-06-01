@@ -1,23 +1,28 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux'; // Import useDispatch
-import { fetchrecipe, setCurrentPage } from '../redux/recipeSlicer'; // Import your actions
+import { useDispatch, useSelector } from 'react-redux'; // Import useDispatch
+import { fetchrecipe, setCurrentPage,visitedPages } from '../redux/recipeSlicer'; // Import your actions
 
 const POSTS_PER_PAGE = 12;
 
 const Button = ({ total }) => {
     const totalPages = Math.ceil(total / POSTS_PER_PAGE);
     const dispatch = useDispatch(); // Get the dispatch function
+    const state = useSelector((state) => state.recipe)
+    console.log(state.currentPage)
+    console.log(state.visitedPages)
+    console.log(state.data)
 
     const handlePageClick = (page) => {
         // Dispatch the setCurrentPage action to update the current page
+         
         dispatch(setCurrentPage(page));
-
         // Calculate the skip value based on the current page
         const skip = (page - 1) * POSTS_PER_PAGE;
-
         // Dispatch the fetchrecipe action with the updated skip value
         dispatch(fetchrecipe(skip));
-    };
+    
+     }
+;
 
     return (
         <nav className="pagination is-centered" role="navigation" aria-label="pagination">

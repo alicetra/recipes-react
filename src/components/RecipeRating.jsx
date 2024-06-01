@@ -1,7 +1,9 @@
 import React from 'react';
 
 const RecipeRating = ({rating}) => {
-  return <div>Rating: {rating}</div>;
+  return <span className="tag is-info">
+    Rating: {rating}
+    </span>;
 };
 
 export default RecipeRating;

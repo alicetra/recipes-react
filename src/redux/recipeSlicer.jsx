@@ -5,7 +5,6 @@ export const fetchrecipe = createAsyncThunk("fetchrecipe", async (skip) => {
     return data.json()
 })
 
-const POSTS_PER_PAGE = 12
 
 const recipeSlice = createSlice ({
     
@@ -14,11 +13,16 @@ const recipeSlice = createSlice ({
         isLoading: true,
         data: [],
         error: false,
-        currentPage: 1
+        currentPage: 1,
+        visitedPages: [1]
     },
     reducers: {
         setCurrentPage: (state, action) => {
+          const { payload } = action
           state.currentPage = action.payload;
+          if (!state.visitedPages.includes(payload)) {
+            state.visitedPages.push(payload);
+          }
         },
       },
     extraReducers: (builder) => {
@@ -36,5 +40,5 @@ const recipeSlice = createSlice ({
     }
 })
 
-export const { setCurrentPage} = recipeSlice.actions
+export const { setCurrentPage,visitedPages} = recipeSlice.actions
 export default recipeSlice.reducer

@@ -19,7 +19,6 @@ const SinglePage = () => {
   const state = useSelector((state) => state.singleRecipe);
   const recipe = state.data[recipe_id];
 
-  console.log(state)
 
   useEffect(() => {
     if (!(recipe_id in state.data)) {
@@ -32,18 +31,31 @@ const SinglePage = () => {
   }
 
   return (
-    <div>
+    <div className="container has-text-centered">
+    <h1 className="title">
       <RecipeTitle name={recipe.name} id={recipe.id} />
+      </h1>
+      <div class="tags are-medium is-centered">
       <RecipeDifficulty difficulty={recipe.difficulty} />
       <RecipeRating rating={recipe.rating} />
       <RecipeCuisine cuisine={recipe.cuisine} />
       <RecipeReview review={recipe.reviewCount} />
       <RecipeServing serving={recipe.servings} />
       <RecipeTime time={recipe.prepTimeMinutes} />
+      </div>
+  
       <RecipeImage image={recipe.image} />
+      <div className="container has-text-centered">
+
+      <div class="box ">
       <RecipeIngredient ingredient={recipe.ingredients} />
+      </div>
+      <div class="box ">
       <RecipeInstruction instruction={recipe.instructions} />
-    </div>
+      </div>
+      </div>
+      </div>
+  
   );
 };
 

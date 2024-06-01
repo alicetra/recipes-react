@@ -1,7 +1,9 @@
 import React from 'react';
 
 const RecipeServing = ({serving}) => {
-  return <div>Serving: {serving}</div>;
+  return <span className="tag is-warning">
+    Serving: {serving}
+    </span>;
 };
 
 export default RecipeServing;
