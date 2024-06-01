@@ -5,6 +5,7 @@ export const fetchrecipe = createAsyncThunk("fetchrecipe", async () => {
     return data.json()
 })
 
+
 const recipeSlice = createSlice ({
     name :"recipe",
     initialState : {
