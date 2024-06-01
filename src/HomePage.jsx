@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchrecipe } from './redux/recipeSlicer';
 import RecipeTitle from './components/RecipeTitle';
 import RecipeImage from './components/RecipeImage';
-import Button from './components/Button';
 
 const Homepage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipe);
-  console.log(state.data.total)
 
   useEffect(() => {
     if (state.data.length === 0) {
@@ -16,7 +14,7 @@ const Homepage = () => {
     }
   }, []);
 
-return (
+  return (
     <div>
       {state.isLoading ? (
         <h1>Loading...</h1>
@@ -30,18 +28,10 @@ return (
             </div>
             </div>
           ))}
-          <div className="column is-three-quarter">
-          <div className="box">
-          <nav role="navigation" aria-label="pagination">
-           <Button total={state.data.total} />
-           </nav>
-        </div>
-        </div>
         </div>
       )}
     </div>
   );
 };
 
-
-export default Homepage
+export default Homepage;
