@@ -10,11 +10,11 @@ import Button from './components/button';
 const Homepage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipe);
-  console.log(state)
-
+  var skip = 0
+  console.log(state.currentPage)
   useEffect(() => {
     if (state.data.length === 0) {
-    dispatch(fetchrecipe());
+    dispatch(fetchrecipe(skip));
     }
   }, []);
 

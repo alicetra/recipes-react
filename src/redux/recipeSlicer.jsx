@@ -1,17 +1,26 @@
 import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
-export const fetchrecipe = createAsyncThunk("fetchrecipe", async () => {
-    const data = await fetch('https://dummyjson.com/recipes')
+export const fetchrecipe = createAsyncThunk("fetchrecipe", async (skip) => {
+    const data = await fetch(`https://dummyjson.com/recipes?limit=12&skip=${skip}&select=name,image`)
     return data.json()
 })
 
+const POSTS_PER_PAGE = 12
+
 const recipeSlice = createSlice ({
+    
     name :"recipe",
     initialState : {
         isLoading: true,
         data: [],
         error: false,
+        currentPage: 1
     },
+    reducers: {
+        setCurrentPage: (state, action) => {
+          state.currentPage = action.payload;
+        },
+      },
     extraReducers: (builder) => {
         builder.addCase(fetchrecipe.pending, (state,action) => {
         state.isLoading = true
@@ -27,4 +36,5 @@ const recipeSlice = createSlice ({
     }
 })
 
+export const { setCurrentPage} = recipeSlice.actions
 export default recipeSlice.reducer
