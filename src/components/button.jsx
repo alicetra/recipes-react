@@ -25,9 +25,11 @@ const Button = ({ total }) => {
 ;
 
     return (
-        <nav className="pagination is-centered" role="navigation" aria-label="pagination">
-            <a className="pagination-previous">Previous</a>
-            <a className="pagination-next">Next</a>
+        <nav className="pagination is-right" role="navigation" aria-label="pagination" >
+            <a className="pagination-previous"  
+                            onClick={() => handlePageClick(state.currentPage - 1)} >Previous</a>
+            <a className="pagination-next" 
+                            onClick={() => handlePageClick(state.currentPage + 1)} >Next</a>
             <ul className="pagination-list">
                 {[...Array(totalPages)].map((_, i) => (
                     <li key={i}>

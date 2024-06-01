@@ -4,6 +4,7 @@ import { fetchrecipe } from './redux/recipeSlicer';
 import RecipeTitle from './components/RecipeTitle';
 import RecipeImage from './components/RecipeImage';
 import Button from './components/button';
+import navtest from './components/nav';
 
 
 
@@ -25,7 +26,7 @@ const Homepage = () => {
         <div>
         <div className="columns is-multiline">
           {state.data.recipes.map((item, index) => (
-            <div key={index} className="column is-4 box">
+            <div key={index} className="column is-4 ">
               <div className="content has-text-centered">
               <RecipeTitle name={item.name} id={item.id} />
               <RecipeImage image={item.image}  />
