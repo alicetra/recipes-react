@@ -1,7 +1,7 @@
 import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchrecipe = createAsyncThunk("fetchrecipe", async () => {
-    const data = await fetch('https://dummyjson.com/recipes?limit=12&select=name,image')
+    const data = await fetch('https://dummyjson.com/recipes')
     return data.json()
 })
 
