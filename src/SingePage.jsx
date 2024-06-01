@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import RecipeTitle from './components/RecipeTitle';
 import RecipeDifficulty from './components/RecipeDifficulty';
 import RecipeRating from './components/RecipeRating';
@@ -9,40 +9,40 @@ import RecipeImage from './components/RecipeImage';
 import RecipeReview from './components/RecipeReview';
 import RecipeServing from './components/RecipeServing';
 import RecipeTime from './components/RecipeTime';
-import RecipeInstruction from './components/RecipleInstruction';
+import RecipeInstruction from './components/RecipeInstruction';
 import RecipeIngredient from './components/RecipeIngredient';
+import { fetchsinglerecipe } from './redux/singleRecipeSlicer';
 
 const SinglePage = () => {
   const { recipe_id } = useParams();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.singleRecipe);
+  const recipe = state.data[recipe_id];
 
-  const state = useSelector((state) => state.recipe);
-// I need this since recipe_id is a string instead of an integer and find will return undefined
-const numericRecipeId = parseInt(recipe_id, 10)
-const selectedItem = state.data.recipes.find(recipe => recipe.id === numericRecipeId)
+  console.log(state)
 
-  console.log("Recipe ID:", recipe_id);
-  console.log("All Recipes:", state.data.recipes);
-  console.log("Selected Item:", selectedItem);
+  useEffect(() => {
+    if (!(recipe_id in state.data)) {
+      dispatch(fetchsinglerecipe(recipe_id));
+    }
+  }, [dispatch, recipe_id, state.data]);
 
-  
+  if (state.isLoading || !recipe) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div>
-      {state.isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div>
-        <RecipeTitle name={selectedItem.name} id={selectedItem.id} />
-        <RecipeDifficulty difficulty={selectedItem.difficulty} />
-        <RecipeRating rating={selectedItem.rating} />
-        <RecipeCuisine cuisine={selectedItem.cuisine} />
-        <RecipeReview review={selectedItem.reviewCount} />
-        <RecipeServing serving={selectedItem.servings} />
-        <RecipeTime time={selectedItem.prepTimeMinutes} />
-        <RecipeImage image={selectedItem.image} />
-        <RecipeIngredient ingredient={selectedItem.ingredients} />
-        <RecipeInstruction instruction={selectedItem.instructions} />
-        </div>
-      )}
+      <RecipeTitle name={recipe.name} id={recipe.id} />
+      <RecipeDifficulty difficulty={recipe.difficulty} />
+      <RecipeRating rating={recipe.rating} />
+      <RecipeCuisine cuisine={recipe.cuisine} />
+      <RecipeReview review={recipe.reviewCount} />
+      <RecipeServing serving={recipe.servings} />
+      <RecipeTime time={recipe.prepTimeMinutes} />
+      <RecipeImage image={recipe.image} />
+      <RecipeIngredient ingredient={recipe.ingredients} />
+      <RecipeInstruction instruction={recipe.instructions} />
     </div>
   );
 };
