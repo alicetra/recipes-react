@@ -31,7 +31,7 @@ const Homepage = () => {
   }
   
   return (
-    <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
+    <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center", marginTop: "10vh"}}>
       {state.isLoading ? (
         <div className="columns is-centered" style={{ width: "100%" }}>
           <div className="column is-half has-text-centered">
