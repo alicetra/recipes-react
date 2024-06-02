@@ -13,11 +13,12 @@ const Homepage = () => {
   const state = useSelector((state) => state.recipe)
   console.log(state)
 
+  // only fetch if user has not visited the page already 
   useEffect(() => {
     if (!(state.currentPage in state.data)) {
       dispatch(fetchrecipe(0));
     }
-  }, []);
+  }, [dispatch, state.currentPage, state.data]);
 
   if (state.error) {
     return (
