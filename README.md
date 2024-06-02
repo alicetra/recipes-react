@@ -1,8 +1,18 @@
-# React + Vite
+# Links
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [ Deployed Website](https://recipes-react-chi.vercel.app/)
+- [ GitHub Repo ](https://github.com/alicetra/recipes-react/)
 
-Currently, two official plugins are available:
+# Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Reactjs
+- Vite : Allow me to set up my React environment
+- React Router Dom : Allow me to navigate and establish my routes
+- React Redux & toolkit : State management tool for react
+- Bulma : Css Framework
+
+# Features
+
+- Responsive design, works desktop, laptop and mobile devices
+- Pagination
+
