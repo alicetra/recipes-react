@@ -13,7 +13,6 @@ import RecipeInstruction from './components/RecipeInstruction';
 import RecipeIngredient from './components/RecipeIngredient';
 import { fetchsinglerecipe } from './redux/singleRecipeSlicer';
 import Navtest from './components/nav';
-
 const SinglePage = () => {
   const { recipe_id } = useParams();
   const dispatch = useDispatch();
@@ -28,8 +27,9 @@ const SinglePage = () => {
   }, [dispatch, recipe_id, state.data]);
 
   if (state.isLoading || !recipe) {
-    return <h1>Loading...</h1>;
+    return <h1 className="title is-1">Loading...</h1>;
   }
+
 
   return (
     <div>
@@ -50,15 +50,20 @@ const SinglePage = () => {
       <RecipeImage image={recipe.image} />
       <div className="container has-text-centered">
 
-      <div class="box ">
+      <div class="columns">
+      <div class="column is-half">
       <RecipeIngredient ingredient={recipe.ingredients} />
       </div>
-      <div class="box ">
+
+      <div class="column is-one-third">
       <RecipeInstruction instruction={recipe.instructions} />
       </div>
       </div>
+
       </div>
       </div>
+      </div>
+
   
   );
   

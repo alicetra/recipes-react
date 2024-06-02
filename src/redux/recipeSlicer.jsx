@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchrecipe = createAsyncThunk("fetchrecipe", async (skip) => {
-  const data = await fetch(`https://dummyjson.com/recipes?limit=12&skip=${skip}&select=name,image`)
-  return data.json()
-})
+    const data = await fetch(`https://dummyjson.com/recipes?limit=12&skip=${skip}&select=name,image`);
+    if (data.status === 200) {
+      return data.json();
+    } else {
+      console.log(data.status);
+    }
+  })
 
-
-const POSTS_PER_PAGE = 12;
 
 const recipeSlice = createSlice({
 
@@ -35,7 +37,6 @@ const recipeSlice = createSlice({
 
     });
     builder.addCase(fetchrecipe.rejected, (state, action) => {
-      console.log(action)
       state.error = true
     })
   }

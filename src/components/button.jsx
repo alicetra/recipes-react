@@ -31,7 +31,7 @@ const Button = ({ total }) => {
             <a className="pagination-previous"
                 onClick={() => handlePageClick(state.currentPage - 1)} >Previous</a>
             <a className="pagination-next"
-                onClick={() => handlePageClick(state.currentPage + 1)} >Next</a>
+                onClick={() => handlePageClick(state.currentPage + 1)} disabled={state.currentPage === totalPages} >Next</a>
             <ul className="pagination-list">
                 {[...Array(totalPages)].map((_, i) => (
                     <li key={i}>

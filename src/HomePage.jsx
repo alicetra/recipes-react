@@ -19,10 +19,13 @@ const Homepage = () => {
     }
   }, []);
 
+
   return (
-    <div>
+    <div className="container">
       {state.isLoading ? (
-        <h1>Loading...</h1>
+        <div className="column">
+        <h1 className="title is-1">Loading...</h1>
+         </div>
       ) : (
         <div>
           <Navtest />

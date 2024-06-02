@@ -2,8 +2,13 @@ import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchsinglerecipe = createAsyncThunk("fetchsinglerecipe", async (recipeId) => {
     const data = await fetch('https://dummyjson.com/recipes/' + recipeId)
-    return data.json()
-})
+    if (data.status === 200) {
+        return data.json();
+      } else {
+        console.log(data.status);
+      }
+    })
+  
 
 const singleRecipeSlice = createSlice ({
     name :"Singlerecipe",
@@ -21,7 +26,6 @@ const singleRecipeSlice = createSlice ({
         state.data[action.payload.id] = action.payload
         });
         builder.addCase(fetchsinglerecipe.rejected, (state,action) => {
-        console.log(action)
         state.error = true
         })
     }

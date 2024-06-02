@@ -21,9 +21,9 @@ const Navtest = () => {
           data-target='navbarBasicExample'
         >
             
-          <span aria-hidden='true'></span>
-          <span aria-hidden='true'></span>
-          <span aria-hidden='true'></span>
+          <span aria-hidden='true' onClick={handleNavigateToCreatePost} ></span>
+          <span aria-hidden='true' onClick={handleNavigateToCreatePost}></span>
+          <span aria-hidden='true' onClick={handleNavigateToCreatePost}></span>
         </a>
       </div>
       <div id='navbarBasicExample' className='navbar-menu'>
