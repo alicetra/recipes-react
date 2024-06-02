@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Navtest = () => {
+const NavBar = () => {
 
   const nav = useNavigate();
 
@@ -42,4 +42,4 @@ const Navtest = () => {
   );
 };
 
-export default Navtest;
+export default NavBar;

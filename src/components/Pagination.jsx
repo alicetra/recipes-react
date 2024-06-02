@@ -4,7 +4,7 @@ import { fetchrecipe, setCurrentPage, visitedPages } from '../redux/recipeSlicer
 
 const POSTS_PER_PAGE = 12;
 
-const Button = ({ total }) => {
+const Pagination = ({ total }) => {
     const totalPages = Math.ceil(total / POSTS_PER_PAGE);
     const dispatch = useDispatch(); 
     const state = useSelector((state) => state.recipe)
@@ -48,4 +48,4 @@ const Button = ({ total }) => {
     );
 };
 
-export default Button;
+export default Pagination;

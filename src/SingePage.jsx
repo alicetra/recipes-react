@@ -12,7 +12,9 @@ import RecipeTime from './components/RecipeTime';
 import RecipeInstruction from './components/RecipeInstruction';
 import RecipeIngredient from './components/RecipeIngredient';
 import { fetchsinglerecipe } from './redux/singleRecipeSlicer';
-import Navtest from './components/nav';
+import NavBar from './components/NavBar';
+
+
 const SinglePage = () => {
   const { recipe_id } = useParams();
   const dispatch = useDispatch();
@@ -50,8 +52,8 @@ const SinglePage = () => {
 
   return (
     <div>
-      <Navtest />
-      <div className="container has-text-centered">
+      <NavBar />
+      <div className="container has-text-centered" style={{ marginTop: "10vh" }}>
         <h1 className="title">
           <RecipeTitle name={recipe.name} id={recipe.id} />
         </h1>
@@ -67,12 +69,12 @@ const SinglePage = () => {
         <RecipeImage image={recipe.image} />
         <div className="container has-text-centered">
 
-          <div class="columns">
-            <div class="column is-half">
+          <div className="columns">
+            <div className="column is-half">
               <RecipeIngredient ingredient={recipe.ingredients} />
             </div>
 
-            <div class="column is-one-third">
+            <div className="column is-one-third">
               <RecipeInstruction instruction={recipe.instructions} />
             </div>
           </div>

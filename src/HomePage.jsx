@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchrecipe } from './redux/recipeSlicer';
 import RecipeTitle from './components/RecipeTitle';
 import RecipeImage from './components/RecipeImage';
-import Button from './components/button';
-import Navtest from './components/nav';
+import Pagination from './components/Pagination';
+import NavBar from './components/NavBar';
 
 
 
@@ -39,7 +39,7 @@ const Homepage = () => {
         </div>
       ) : (
         <div>
-          <Navtest />
+          <NavBar />
           <div className="columns is-multiline is-centered" style={{ width: "100%" }}>
             {state.data[state.currentPage].map((item, index) => (
               <div key={index} className="column is-4">
@@ -50,7 +50,7 @@ const Homepage = () => {
               </div>
             ))}
           </div>
-          <Button total={state.totalRecipe} />
+          <Pagination total={state.totalRecipe} />
         </div>
       )}
     </div>
