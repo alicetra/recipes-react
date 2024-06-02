@@ -8,7 +8,6 @@ import Navtest from './components/nav';
 function App() {
   return (
     <>
-    <Navtest/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage/>} />

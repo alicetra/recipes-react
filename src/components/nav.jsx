@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchrecipe } from '../redux/recipeSlicer';
+import { useNavigate  } from 'react-router-dom'; 
 
 
 const Navtest = () => {
 
+  const nav = useNavigate();
+
+  const handleNavigateToCreatePost = () => {
+		nav("/");
+	}
     return (
 <nav className='navbar' role='navigation' aria-label='main navigation'>
       <div className='navbar-brand'>
@@ -25,9 +29,9 @@ const Navtest = () => {
       <div id='navbarBasicExample' className='navbar-menu'>
         <div className='navbar-end'>
           <div className='navbar-item'>
-            <a href='/' className='navbar-item'>
+            <button onClick={handleNavigateToCreatePost} className='navbar-item'>
               Home
-            </a>
+            </button>
 
           </div>
         </div>

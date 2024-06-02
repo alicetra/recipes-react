@@ -12,6 +12,7 @@ import RecipeTime from './components/RecipeTime';
 import RecipeInstruction from './components/RecipeInstruction';
 import RecipeIngredient from './components/RecipeIngredient';
 import { fetchsinglerecipe } from './redux/singleRecipeSlicer';
+import Navtest from './components/nav';
 
 const SinglePage = () => {
   const { recipe_id } = useParams();
@@ -31,11 +32,13 @@ const SinglePage = () => {
   }
 
   return (
+    <div>
+    <Navtest />
     <div className="container has-text-centered">
     <h1 className="title">
       <RecipeTitle name={recipe.name} id={recipe.id} />
       </h1>
-      <div class="tags are-medium is-centered">
+      <div className="tags are-medium is-centered">
       <RecipeDifficulty difficulty={recipe.difficulty} />
       <RecipeRating rating={recipe.rating} />
       <RecipeCuisine cuisine={recipe.cuisine} />
@@ -55,8 +58,10 @@ const SinglePage = () => {
       </div>
       </div>
       </div>
+      </div>
   
   );
+  
 };
 
 export default SinglePage;

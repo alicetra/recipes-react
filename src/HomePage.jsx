@@ -5,6 +5,7 @@ import RecipeTitle from './components/RecipeTitle';
 import RecipeImage from './components/RecipeImage';
 import Button from './components/button';
 import navtest from './components/nav';
+import Navtest from './components/nav';
 
 
 
@@ -24,6 +25,7 @@ const Homepage = () => {
         <h1>Loading...</h1>
       ) : (
         <div>
+          <Navtest />
         <div className="columns is-multiline">
           {state.data.recipes.map((item, index) => (
             <div key={index} className="column is-4 ">
