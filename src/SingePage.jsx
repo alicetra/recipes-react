@@ -18,7 +18,7 @@ const SinglePage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.singleRecipe);
   const recipe = state.data[recipe_id];
-
+  console.log(state)
 
   useEffect(() => {
     if (!(recipe_id in state.data)) {
@@ -26,47 +26,64 @@ const SinglePage = () => {
     }
   }, [dispatch, recipe_id, state.data]);
 
+
+  if (state.error) {
+    return (
+      <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", minWidth: "100vw" }}>
+        <div className="column is-half has-text-centered">
+          <h1 className="title is-1">Oops something went wrong: {state.error.message}</h1>
+        </div>
+      </div>
+    );
+  }
+  
   if (state.isLoading || !recipe) {
-    return <h1 className="title is-1">Loading...</h1>;
+    return (
+      <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", minWidth: "100vw" }}>
+        <div className="column is-half has-text-centered">
+          <h1 className="title is-1">Loading...</h1>
+        </div>
+      </div>
+    );
   }
 
 
   return (
     <div>
-    <Navtest />
-    <div className="container has-text-centered">
-    <h1 className="title">
-      <RecipeTitle name={recipe.name} id={recipe.id} />
-      </h1>
-      <div className="tags are-medium is-centered">
-      <RecipeDifficulty difficulty={recipe.difficulty} />
-      <RecipeRating rating={recipe.rating} />
-      <RecipeCuisine cuisine={recipe.cuisine} />
-      <RecipeReview review={recipe.reviewCount} />
-      <RecipeServing serving={recipe.servings} />
-      <RecipeTime time={recipe.prepTimeMinutes} />
-      </div>
-  
-      <RecipeImage image={recipe.image} />
+      <Navtest />
       <div className="container has-text-centered">
+        <h1 className="title">
+          <RecipeTitle name={recipe.name} id={recipe.id} />
+        </h1>
+        <div className="tags are-medium is-centered">
+          <RecipeDifficulty difficulty={recipe.difficulty} />
+          <RecipeRating rating={recipe.rating} />
+          <RecipeCuisine cuisine={recipe.cuisine} />
+          <RecipeReview review={recipe.reviewCount} />
+          <RecipeServing serving={recipe.servings} />
+          <RecipeTime time={recipe.prepTimeMinutes} />
+        </div>
 
-      <div class="columns">
-      <div class="column is-half">
-      <RecipeIngredient ingredient={recipe.ingredients} />
-      </div>
+        <RecipeImage image={recipe.image} />
+        <div className="container has-text-centered">
 
-      <div class="column is-one-third">
-      <RecipeInstruction instruction={recipe.instructions} />
-      </div>
-      </div>
+          <div class="columns">
+            <div class="column is-half">
+              <RecipeIngredient ingredient={recipe.ingredients} />
+            </div>
 
-      </div>
-      </div>
-      </div>
+            <div class="column is-one-third">
+              <RecipeInstruction instruction={recipe.instructions} />
+            </div>
+          </div>
 
-  
+        </div>
+      </div>
+    </div>
+
+
   );
-  
+
 };
 
 export default SinglePage;

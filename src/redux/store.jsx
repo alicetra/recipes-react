@@ -4,8 +4,8 @@ import singleRecipeReducer from './singleRecipeSlicer';
 
 export const store = configureStore({
     reducer: {
-    recipe: recipeReducer,
-    singleRecipe:singleRecipeReducer
+        recipe: recipeReducer,
+        singleRecipe: singleRecipeReducer
     }
 
 }) 

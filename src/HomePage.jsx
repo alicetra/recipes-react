@@ -12,39 +12,49 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipe)
   console.log(state)
-  
+
   useEffect(() => {
     if (!(state.currentPage in state.data)) {
-    dispatch(fetchrecipe(0));
+      dispatch(fetchrecipe(0));
     }
   }, []);
 
-
+  if (state.error) {
+    return (
+      <div className="columns is-centered" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
+        <div className="column is-half has-text-centered">
+          <h1 className="title is-1">Oops something went wrong: {state.error.message}</h1>
+        </div>
+      </div>
+    );
+  }
+  
   return (
-    <div className="container">
+    <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
       {state.isLoading ? (
-        <div className="column">
-        <h1 className="title is-1">Loading...</h1>
-         </div>
+        <div className="columns is-centered" style={{ width: "100%" }}>
+          <div className="column is-half has-text-centered">
+            <h1 className="title is-1">Loading...</h1>
+          </div>
+        </div>
       ) : (
         <div>
           <Navtest />
-        <div className="columns is-multiline">
-          {state.data[state.currentPage].map((item, index) => (
-            <div key={index} className="column is-4 ">
-              <div className="content has-text-centered">
-              <RecipeTitle name={item.name} id={item.id} />
-              <RecipeImage image={item.image}  />
-            </div>
-            </div>
-          ))}
-          
-        </div>
-        <Button total={state.totalRecipe}/>
+          <div className="columns is-multiline is-centered" style={{ width: "100%" }}>
+            {state.data[state.currentPage].map((item, index) => (
+              <div key={index} className="column is-4">
+                <div className="content has-text-centered">
+                  <RecipeTitle name={item.name} id={item.id} />
+                  <RecipeImage image={item.image} />
+                </div>
+              </div>
+            ))}
+          </div>
+          <Button total={state.totalRecipe} />
         </div>
       )}
     </div>
-  );
+  )
 };
 
 export default Homepage;

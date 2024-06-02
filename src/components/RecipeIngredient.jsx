@@ -8,8 +8,8 @@ const RecipeIngredients = ({ ingredient }) => {
         {ingredient.map((ingredient, index) => (
           <div key={index} >
             <label className="checkbox ">
-            <input type="checkbox" />
-             </label> {ingredient}</div>
+              <input type="checkbox" />
+            </label> {ingredient}</div>
         ))}
       </div>
     </div>

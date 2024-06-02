@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecipeDifficulty = ({difficulty,id}) => {
+const RecipeDifficulty = ({ difficulty, id }) => {
   return <span className="tag is-dark">Difficult: {difficulty} </span>;
 };
 

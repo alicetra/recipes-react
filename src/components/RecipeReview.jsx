@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RecipeReview = ({review}) => {
+const RecipeReview = ({ review }) => {
   return <span className="tag is-success">
     Review Count: {review}
-    </span>;
+  </span>;
 };
 
 export default RecipeReview;

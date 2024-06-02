@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RecipeCuisine = ({cuisine}) => {
+const RecipeCuisine = ({ cuisine }) => {
   return <span className="tag is-black">
-    Cuisine: {cuisine} 
-    </span>;
+    Cuisine: {cuisine}
+  </span>;
 };
 
 export default RecipeCuisine;
