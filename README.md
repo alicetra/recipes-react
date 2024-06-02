@@ -16,3 +16,11 @@
 - Responsive design, works desktop, laptop and mobile devices
 - Pagination
 
+## Instruction
+
+Should you wish to clone this repository and run it locally 
+
+- Open terminal and input "git clone git@github.com:alicetra/recipes-react.git" from a location where you want the folder to be created into.
+- Make sure you "cd" into the repository eg "cd recipes-react/"
+- Install the dependencies from the package.json file by inputting "npm install"
+- Input "npm run dev" and this should run project locally on your localhost 
