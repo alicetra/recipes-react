@@ -4,7 +4,6 @@ import { fetchrecipe } from './redux/recipeSlicer';
 import RecipeTitle from './components/RecipeTitle';
 import RecipeImage from './components/RecipeImage';
 import Button from './components/button';
-import navtest from './components/nav';
 import Navtest from './components/nav';
 
 
@@ -12,9 +11,10 @@ import Navtest from './components/nav';
 const Homepage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipe)
+  console.log(state)
   
   useEffect(() => {
-    if (state.data.length === 0) {
+    if (!(state.currentPage in state.data)) {
     dispatch(fetchrecipe(0));
     }
   }, []);
@@ -27,7 +27,7 @@ const Homepage = () => {
         <div>
           <Navtest />
         <div className="columns is-multiline">
-          {state.data.recipes.map((item, index) => (
+          {state.data[state.currentPage].map((item, index) => (
             <div key={index} className="column is-4 ">
               <div className="content has-text-centered">
               <RecipeTitle name={item.name} id={item.id} />
@@ -37,7 +37,7 @@ const Homepage = () => {
           ))}
           
         </div>
-        <Button total={state.data.total}/>
+        <Button total={state.totalRecipe}/>
         </div>
       )}
     </div>

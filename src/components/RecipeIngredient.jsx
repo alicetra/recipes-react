@@ -7,7 +7,7 @@ const RecipeIngredients = ({ ingredient }) => {
       <div>
         {ingredient.map((ingredient, index) => (
           <div key={index} >
-            <label class="checkbox ">
+            <label className="checkbox ">
             <input type="checkbox" />
              </label> {ingredient}</div>
         ))}
