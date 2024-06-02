@@ -16,13 +16,14 @@ import NavBar from './components/NavBar';
 
 
 const SinglePage = () => {
+  // the reason why recipe_id is already set in the Params is because I passed the item.id data from the homepage to the RecipeTitle component
   const { recipe_id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.singleRecipe);
   const recipe = state.data[recipe_id];
-  console.log(state)
 
   useEffect(() => {
+    // only fetch if we don't already have the recipe key (eg the id) in our state which is keeping a memory of all the recipes user clicked on.
     if (!(recipe_id in state.data)) {
       dispatch(fetchsinglerecipe(recipe_id));
     }
@@ -39,6 +40,8 @@ const SinglePage = () => {
     );
   }
   
+  // the or statement is there because on loading if user client on recipe id 1 and then recipe id 2 our recipe id number 2 doesn't exist as of yet
+  // in our state and the code jumps straight to the below lines and break the page
   if (state.isLoading || !recipe) {
     return (
       <div className="container" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", minWidth: "100vw" }}>
